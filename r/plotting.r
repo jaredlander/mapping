@@ -10,7 +10,7 @@
 #' @author Jared P. Lander
 #' @aliases map.plot
 #' @export map.plot
-#' @import ggplot2 scales
+#' @import ggplot2
 #' @param data \code{\link{data.frame}} resulting from using \code{\link{fortify}} on a shapefile object.
 #' @param variable Character indicating which column should be plotted.
 #' @param fill.color.high Color to use for top of gradient.
@@ -18,7 +18,7 @@
 #' @param path.color Color to use for shapefile lines.
 #' @param title Title of plot.
 #' @param xlab X-axis label.
-#' @param ylav Y-axis label.
+#' @param ylab Y-axis label.
 #' @param barheight Height of legend bar.
 #' @param formatter How the legend numbers should be formatted.  Takes a function.
 #' @param legend.position Position of legend.
