@@ -1,0 +1,7 @@
+export(prepare.shape)
+import(ggplot2)
+import(maptools)
+import(plyr)
+import(rgdal)
+import(rgeos)
+import(stringr)

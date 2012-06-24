@@ -1,0 +1,17 @@
+Package: mapping
+Type: Package
+Title: Prepares Shape Files for Mapping
+Version: 1.0.0
+Date: 2012-06-22
+Author: Jared P. Lander
+Maintainer: <packages@jaredlander.com>
+Description: Prepares Shape Files for Mapping
+License: BSD
+LazyLoad: yes
+Depends:
+    ggplot2,
+    plyr,
+    useful,
+    stringr
+Collate:
+    'shape.r'
