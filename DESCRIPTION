@@ -12,8 +12,10 @@ Depends:
     ggplot2,
     plyr,
     useful,
-    stringr
+    stringr,
+    scales,
+    maptools
 Collate:
     'shape.r'
-    'mapping.r'
     'formatters.r'
+    'plotting.r'
