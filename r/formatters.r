@@ -11,15 +11,21 @@
 #' @export multiple
 #' @import scales
 #' @param x Vector of numbers to be formatted.
-#' @param The multiple to display numbers in.  This symbol will be added to the end of the numbers.
+#' @param multiple The multiple to display numbers in.  This symbol will be added to the end of the numbers.
 #' @param extra Function for perform any further formatting.
 #' @param digits Number of decimal places for rounding.
 #' @return Character vector of formatted numbers.
 #' @examples
+#' 
+#' require(scales)
 #' vect <- c(1000, 1500, 23450, 21784, 875003780)
 #' multiple(vect)
 #' multiple(vect, extra=dollar)
 #' multiple(vect, extra=identity)
+#' 
+#' require(ggplot2)
+#' data(diamonds)
+#' ggplot(diamonds, aes(x=x, y=y, color=price*100)) + geom_point() + scale_color_gradient2(labels=multiple)
 #' 
 multiple <- function(x, multiple=c("K", "M", "B", "T", "H", "k", "m", "b", "t", "h"), extra=comma, digits=0)
 {
@@ -52,10 +58,16 @@ multiple <- function(x, multiple=c("K", "M", "B", "T", "H", "k", "m", "b", "t", 
 #' @aliases multiple_format
 #' @examples
 #' 
+#' require(scales)
 #' vect <- c(1000, 1500, 23450, 21784, 875003780)
 #' multiple_format()(vect)
 #' multiple_format(extra=dollar)(vect)
 #' multiple_format(extra=identity)(vect)
+#' 
+#' require(ggplot2)
+#' data(diamonds)
+#' ggplot(diamonds, aes(x=x, y=y, color=price*100)) + geom_point() + scale_color_gradient2(labels=multiple_format(extra=dollar))
+#' 
 multiple_format <- function(...)
 {
     function(x) multiple(x, ...)
@@ -74,20 +86,24 @@ multiple_format <- function(...)
 #' @export multiple.dollar
 #' @import scales
 #' @param x Vector of numbers to be formatted.
-#' @param The multiple to display numbers in.  This symbol will be added to the end of the numbers.
-#' @param digits Number of decimal places for rounding.
+#' @param \dots Further arguments to be passed on to \code{link{multiple}}
 #' @return Character vector of dollar formatted numbers.
 #' @examples
+#' 
+#' require(scales)
 #' vect <- c(1000, 1500, 23450, 21784, 875003780)
 #' multiple.dollar(vect)
 #' multiple.dollar(vect, multiple="k")
 #' multiple.dollar(vect, multiple="h")
+#' 
+#' require(ggplot2)
+#' data(diamonds)
+#' ggplot(diamonds, aes(x=x, y=y, color=price*100)) + geom_point() + scale_color_gradient2(labels=multiple.dollar)
 #'
-multiple.dollar <- function(x, multiple=c("K", "M", "B", "T", "k", "m", "b", "t"))
+multiple.dollar <- function(x, ...)
 {
-    multiple(x=x, multiple=multiple, extra=dollar)
+    multiple(x=x, extra=dollar, ...)
 }
-
 
 
 #' multiple.comma
@@ -101,18 +117,23 @@ multiple.dollar <- function(x, multiple=c("K", "M", "B", "T", "k", "m", "b", "t"
 #' @export multiple.comma
 #' @import scales
 #' @param x Vector of numbers to be formatted.
-#' @param The multiple to display numbers in.  This symbol will be added to the end of the numbers.
-#' @param digits Number of decimal places for rounding.
+#' @param \dots Further arguments to be passed on to \code{link{multiple}}
 #' @return Character vector of comma formatted numbers.
 #' @examples
+#' 
+#' require(scales)
 #' vect <- c(1000, 1500, 23450, 21784, 875003780)
 #' multiple.comma(vect)
 #' multiple.comma(vect, multiple="k")
 #' multiple.comma(vect, multiple="h")
-#'
-multiple.comma <- function(x, multiple=c("K", "M", "B", "T", "k", "m", "b", "t"))
+#' 
+#' require(ggplot2)
+#' data(diamonds)
+#' ggplot(diamonds, aes(x=x, y=y, color=price*100)) + geom_point() + scale_color_gradient2(labels=multiple.comma)
+#' 
+multiple.comma <- function(x, ...)
 {
-    multiple(x=x, multiple=multiple, extra=comma)
+    multiple(x=x, extra=comma, ...)
 }
 
 
@@ -126,18 +147,21 @@ multiple.comma <- function(x, multiple=c("K", "M", "B", "T", "k", "m", "b", "t")
 #' @author Jared P. Lander
 #' @aliases multiple.identity
 #' @export multiple.identity
-#' @import scales
 #' @param x Vector of numbers to be formatted.
-#' @param The multiple to display numbers in.  This symbol will be added to the end of the numbers.
-#' @param digits Number of decimal places for rounding.
+#' @param \dots Further arguments to be passed on to \code{link{multiple}}
 #' @return Character vector of formatted numbers.
 #' @examples
+#' 
 #' vect <- c(1000, 1500, 23450, 21784, 875003780)
 #' multiple.identity(vect)
 #' multiple.identity(vect, multiple="k")
 #' multiple.identity(vect, multiple="h")
+#' 
+#' require(ggplot2)
+#' data(diamonds)
+#' ggplot(diamonds, aes(x=x, y=y, color=price*100)) + geom_point() + scale_color_gradient2(labels=multiple.identity)
 #'
-multiple.identity <- function(x, multiple=c("K", "M", "B", "T", "k", "m", "b", "t"))
-{
-    multiple(x=x, multiple=multiple, extra=identity)
+multiple.identity <- function(x, ...)
+{    
+    multiple(x=x, extra=identity, ...)
 }

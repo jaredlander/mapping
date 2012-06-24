@@ -9,8 +9,8 @@
 \arguments{
   \item{x}{Vector of numbers to be formatted.}
 
-  \item{The}{multiple to display numbers in.  This symbol
-  will be added to the end of the numbers.}
+  \item{multiple}{The multiple to display numbers in.  This
+  symbol will be added to the end of the numbers.}
 
   \item{extra}{Function for perform any further
   formatting.}
@@ -28,10 +28,15 @@
   on the corresponding symbol at the end of the number.
 }
 \examples{
+require(scales)
 vect <- c(1000, 1500, 23450, 21784, 875003780)
 multiple(vect)
 multiple(vect, extra=dollar)
 multiple(vect, extra=identity)
+
+require(ggplot2)
+data(diamonds)
+ggplot(diamonds, aes(x=x, y=y, color=price*100)) + geom_point() + scale_color_gradient2(labels=multiple)
 }
 \author{
   Jared P. Lander

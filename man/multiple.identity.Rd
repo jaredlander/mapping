@@ -2,16 +2,13 @@
 \alias{multiple.identity}
 \title{multiple.comma}
 \usage{
-  multiple.identity(x,
-    multiple = c("K", "M", "B", "T", "k", "m", "b", "t"))
+  multiple.identity(x, ...)
 }
 \arguments{
   \item{x}{Vector of numbers to be formatted.}
 
-  \item{The}{multiple to display numbers in.  This symbol
-  will be added to the end of the numbers.}
-
-  \item{digits}{Number of decimal places for rounding.}
+  \item{\dots}{Further arguments to be passed on to
+  \code{link{multiple}}}
 }
 \value{
   Character vector of formatted numbers.
@@ -28,6 +25,10 @@ vect <- c(1000, 1500, 23450, 21784, 875003780)
 multiple.identity(vect)
 multiple.identity(vect, multiple="k")
 multiple.identity(vect, multiple="h")
+
+require(ggplot2)
+data(diamonds)
+ggplot(diamonds, aes(x=x, y=y, color=price*100)) + geom_point() + scale_color_gradient2(labels=multiple.identity)
 }
 \author{
   Jared P. Lander

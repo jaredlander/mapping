@@ -2,16 +2,13 @@
 \alias{multiple.comma}
 \title{multiple.comma}
 \usage{
-  multiple.comma(x,
-    multiple = c("K", "M", "B", "T", "k", "m", "b", "t"))
+  multiple.comma(x, ...)
 }
 \arguments{
   \item{x}{Vector of numbers to be formatted.}
 
-  \item{The}{multiple to display numbers in.  This symbol
-  will be added to the end of the numbers.}
-
-  \item{digits}{Number of decimal places for rounding.}
+  \item{\dots}{Further arguments to be passed on to
+  \code{link{multiple}}}
 }
 \value{
   Character vector of comma formatted numbers.
@@ -24,10 +21,15 @@
   comma.
 }
 \examples{
+require(scales)
 vect <- c(1000, 1500, 23450, 21784, 875003780)
 multiple.comma(vect)
 multiple.comma(vect, multiple="k")
 multiple.comma(vect, multiple="h")
+
+require(ggplot2)
+data(diamonds)
+ggplot(diamonds, aes(x=x, y=y, color=price*100)) + geom_point() + scale_color_gradient2(labels=multiple.comma)
 }
 \author{
   Jared P. Lander
