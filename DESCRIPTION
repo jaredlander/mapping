@@ -16,3 +16,4 @@ Depends:
 Collate:
     'shape.r'
     'mapping.r'
+    'formatters.r'
