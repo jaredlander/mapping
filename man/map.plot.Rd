@@ -26,7 +26,7 @@
 
   \item{xlab}{X-axis label.}
 
-  \item{ylav}{Y-axis label.}
+  \item{ylab}{Y-axis label.}
 
   \item{barheight}{Height of legend bar.}
 
