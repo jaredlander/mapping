@@ -7,7 +7,11 @@
     path.color = "white", title = NULL, xlab = NULL,
     ylab = NULL, barheight = 15,
     formatter = multiple_format(multiple = "K", extra = comma),
-    legend.position = c("right", "bottom", "left", "top", "none"))
+    legend.position = c("right", "bottom", "left", "top", "none"),
+    lhs = NULL, rhs = NULL,
+    facet = c("none", "facet_wrap", "facet_grid"),
+    wrap.nrow = NULL, wrap.ncol = NULL,
+    scales = c("fixed", "free", "free_y", "free_x"))
 }
 \arguments{
   \item{data}{\code{\link{data.frame}} resulting from using
