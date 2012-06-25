@@ -8,7 +8,7 @@
 #' @return A \code{\link{data.frame}} suitable for use in \code{ggplot}.
 #' @author Jared P. Lander
 #' @aliases prepare.shape.fortify
-#' @import ggplot2 plyr stringr rgeos rgdal stringr
+#' @import ggplot2 plyr stringr maptools
 #' @seealso prepare.shape
 #' @examples \dontrun{
 #' nyc <- readShapeSpatial(fn="nyct2010.shp")
@@ -39,7 +39,6 @@ prepare.shape.fortify <- function(shape)
 #' Reads in a shape file and then fortifies it.
 #' @author Jared P. Lander
 #' @seealso prepare.shape.fortify
-#' @import maptools
 #' @export prepare.shape
 #' @aliases prepare.shape
 #' @param file Name of shape file.
