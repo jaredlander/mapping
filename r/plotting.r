@@ -19,6 +19,8 @@
 #' @param space Color space to use for gradient.
 #' @param path.color Color to use for shapefile lines.
 #' @param title Title of plot.
+#' @param title.size Size of \code{Title} font.
+#' @param title.hjust Horizontal adjustment of \code{Title} position.
 #' @param xlab X-axis label.
 #' @param ylab Y-axis label.
 #' @param barheight Height of legend bar.
@@ -39,7 +41,9 @@
 #' map.plot(mana, "Median.Income", formatter=multiple_format(extra=dollar, multiple="K"))
 #' }
 #' 
-map.plot <- function(data, variable, longitude="long", latitude="lat", fill.color.high=muted("green"), space="Lab", path.color="white", title=NULL, 
+map.plot <- function(data, variable, longitude="long", latitude="lat", fill.color.high=muted("green"), space="Lab", 
+                     path.color="white", 
+                     title=NULL, title.size=NULL, title.hjust=NULL,
                      xlab=NULL, ylab=NULL, barheight=15, formatter=percent,
                      legend.position=c("right", "bottom", "left", "top", "none"), 
                      lhs=NULL, rhs=NULL, facet=c("none", "facet_wrap", "facet_grid"), wrap.nrow=NULL, wrap.ncol=NULL, 
@@ -79,7 +83,7 @@ map.plot <- function(data, variable, longitude="long", latitude="lat", fill.colo
         # make the color scale a gradient and use the chosen formatter
         scale_fill_gradient2(labels=formatter, space=space, high=fill.color.high) + 
         # title of plot
-        opts(title=title) +
+        opts(title=title, plot.title=theme_text(size=title.size, hjust=title.hjust)) +
         # faceting if called for
         facet
     

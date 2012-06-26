@@ -5,8 +5,8 @@
   map.plot(data, variable, longitude = "long",
     latitude = "lat", fill.color.high = muted("green"),
     space = "Lab", path.color = "white", title = NULL,
-    xlab = NULL, ylab = NULL, barheight = 15,
-    formatter = percent,
+    title.size = NULL, title.hjust = NULL, xlab = NULL,
+    ylab = NULL, barheight = 15, formatter = percent,
     legend.position = c("right", "bottom", "left", "top", "none"),
     lhs = NULL, rhs = NULL,
     facet = c("none", "facet_wrap", "facet_grid"),
@@ -33,6 +33,11 @@
   \item{path.color}{Color to use for shapefile lines.}
 
   \item{title}{Title of plot.}
+
+  \item{title.size}{Size of \code{Title} font.}
+
+  \item{title.hjust}{Horizontal adjustment of \code{Title}
+  position.}
 
   \item{xlab}{X-axis label.}
 
