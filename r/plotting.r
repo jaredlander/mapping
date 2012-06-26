@@ -13,6 +13,8 @@
 #' @import ggplot2 useful
 #' @param data \code{\link{data.frame}} resulting from using \code{\link{fortify}} on a shapefile object.
 #' @param variable Character indicating which column should be plotted.
+#' @param longitude Character indicating which column stores longitude values.
+#' @param latitude Character indicating which column stores latitude values.
 #' @param fill.color.high Color to use for top of gradient.
 #' @param space Color space to use for gradient.
 #' @param path.color Color to use for shapefile lines.
@@ -22,6 +24,12 @@
 #' @param barheight Height of legend bar.
 #' @param formatter How the legend numbers should be formatted.  Takes a function.
 #' @param legend.position Position of legend.
+#' @param lhs Left side of formula to use for facetting.
+#' @param rhs Right side of formula to use for facetting.
+#' @param facet The type of facetting, if any, to use.
+#' @param wrap.nrow The number of rows to to use when using facet_wrap.
+#' @param wrap.ncol The number of columns to to use when using facet_wrap.
+#' @param scales The scales to be employed when faceting.
 #' @return A ggplot object.
 #' @examples
 #' 
@@ -31,7 +39,7 @@
 #' map.plot(mana, "Median.Income", formatter=multiple_format(extra=dollar, multiple="K"))
 #' }
 #' 
-map.plot <- function(data, longitude="long", latitude="lat", variable, fill.color.high=muted("green"), space="Lab", path.color="white", title=NULL, 
+map.plot <- function(data, variable, longitude="long", latitude="lat", fill.color.high=muted("green"), space="Lab", path.color="white", title=NULL, 
                      xlab=NULL, ylab=NULL, barheight=15, formatter=percent,
                      legend.position=c("right", "bottom", "left", "top", "none"), 
                      lhs=NULL, rhs=NULL, facet=c("none", "facet_wrap", "facet_grid"), wrap.nrow=NULL, wrap.ncol=NULL, 
@@ -79,11 +87,11 @@ map.plot <- function(data, longitude="long", latitude="lat", variable, fill.colo
 }
 
 
-#' facet_wrap_helper
+#' facet helper functions
 #' 
-#' Call facet_wrap
+#' Call facet functions
 #' 
-#' This function merely serves to call \code{link{facet_wrap}}.  It is needed because the program doesn't know if \code{link{facet_wrap}} or \code{\link{facet_grid}} is being called and hence doesn't know what arguments to pass, and those functions are not equiped with \dots.
+#' These functions merely serve to call \code{\link{facet_wrap}}, \code{\link{facet_grid}} or \code{\link{none}}.  It is needed because the program doesn't know if \code{link{facet_wrap}} or \code{\link{facet_grid}} is being called and hence doesn't know what arguments to pass, and those functions are not equiped with \dots.
 #' 
 #' @author Jared P. Lander
 #' @aliases facet_wrap_helper facet_grid_helper none_helper
@@ -105,23 +113,7 @@ facet_wrap_helper <- function(formula, nrow=NULL, ncol=NULL,
 }
 
 
-#' facet_grid_helper
-#' 
-#' Call facet_grid
-#' 
-#' This function merely serves to call \code{link{facet_grid}}.  It is needed because the program doesn't know if \code{link{facet_wrap}} or \code{\link{facet_grid}} is being called and hence doesn't know what arguments to pass, and those functions are not equiped with \dots.
-#' 
-#' @author Jared P. Lander
-#' @aliases facet_wrap_helper facet_grid_helper none_helper
-#' @seealso facet_wrap facet_grid
-#' @import ggplot2
-#' @param formula \code{\link{formula}} for use in \code{link{facet_grid}}
-#' @param nrow Number of rows.
-#' @param ncol Number of columns.
-#' @param scales Should scales be fixed ("fixed", the default), free ("free"), or free in one dimension ("free_x", "free_y").
-#' @param \dots Catch all.
-#' @return The result of \code{link{facet_grid}}.
-#'
+
 facet_grid_helper <- function(formula, 
                               scales=c("fixed", "free", "free_y", "free_x"), ...)
 {
@@ -131,23 +123,12 @@ facet_grid_helper <- function(formula,
 }
 
 
-#' none_helper
-#' 
-#' Call none
-#' 
-#' This function merely serves to call \code{link{none}}.  It is needed because the program doesn't know if \code{link{facet_wrap}} or \code{\link{facet_grid}} is being called and hence doesn't know what arguments to pass, and those functions are not equiped with \dots.
-#' 
-#' @author Jared P. Lander
-#' @aliases facet_wrap_helper facet_grid_helper none_helper
-#' @seealso facet_wrap facet_grid none
-#' @import ggplot2
-#' @param \dots Catch all.
-#' @return \code{\link{NULL}}.
-#'
 none_helper <- function(...)
 {
     none(...)
 }
+
+
 
 #' none
 #' 
