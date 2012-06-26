@@ -58,7 +58,7 @@ map.plot <- function(data, longitude="long", latitude="lat", variable, fill.colo
     # start plotting
     p <- ggplot(data) + 
         # lat/long and group
-        aes(x=longitude, y=latitude, group=group) + 
+        aes_string(x=longitude, y=latitude, group="group") + 
         # coloring based on the variable
         aes_string(fill=variable) +  geom_polygon() + 
         geom_path(color=path.color) + coord_equal() + 
