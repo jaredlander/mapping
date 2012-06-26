@@ -32,12 +32,13 @@
 #' }
 #' 
 map.plot <- function(data, variable, fill.color.high=muted("green"), space="Lab", path.color="white", title=NULL, 
-                     xlab=NULL, ylab=NULL, barheight=15, formatter=multiple_format(multiple="K", extra=comma),
+                     xlab=NULL, ylab=NULL, barheight=15, formatter=percent,
                      legend.position=c("right", "bottom", "left", "top", "none"), 
                      lhs=NULL, rhs=NULL, facet=c("none", "facet_wrap", "facet_grid"), wrap.nrow=NULL, wrap.ncol=NULL, 
                      scales=c("fixed", "free", "free_y", "free_x")
                      )
 {
+    # old formatter multiple_format(multiple="K", extra=comma)
     # generate a bunch of prebuilt map options for easier plotting
     mapOpts <- map.options()
     
