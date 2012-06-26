@@ -31,7 +31,7 @@
 #' map.plot(mana, "Median.Income", formatter=multiple_format(extra=dollar, multiple="K"))
 #' }
 #' 
-map.plot <- function(data, variable, fill.color.high=muted("green"), space="Lab", path.color="white", title=NULL, 
+map.plot <- function(data, longitude="long", latitude="lat", variable, fill.color.high=muted("green"), space="Lab", path.color="white", title=NULL, 
                      xlab=NULL, ylab=NULL, barheight=15, formatter=percent,
                      legend.position=c("right", "bottom", "left", "top", "none"), 
                      lhs=NULL, rhs=NULL, facet=c("none", "facet_wrap", "facet_grid"), wrap.nrow=NULL, wrap.ncol=NULL, 
@@ -58,7 +58,7 @@ map.plot <- function(data, variable, fill.color.high=muted("green"), space="Lab"
     # start plotting
     p <- ggplot(data) + 
         # lat/long and group
-        aes(x=long, y=lat, group=group) + 
+        aes(x=longitude, y=latitude, group=group) + 
         # coloring based on the variable
         aes_string(fill=variable) +  geom_polygon() + 
         geom_path(color=path.color) + coord_equal() + 
