@@ -2,11 +2,11 @@
 \alias{map.plot}
 \title{map.plot}
 \usage{
-  map.plot(data, variable,
-    fill.color.high = muted("green"), space = "Lab",
-    path.color = "white", title = NULL, xlab = NULL,
-    ylab = NULL, barheight = 15,
-    formatter = multiple_format(multiple = "K", extra = comma),
+  map.plot(data, variable, longitude = "long",
+    latitude = "lat", fill.color.high = muted("green"),
+    space = "Lab", path.color = "white", title = NULL,
+    xlab = NULL, ylab = NULL, barheight = 15,
+    formatter = percent,
     legend.position = c("right", "bottom", "left", "top", "none"),
     lhs = NULL, rhs = NULL,
     facet = c("none", "facet_wrap", "facet_grid"),
@@ -19,6 +19,12 @@
 
   \item{variable}{Character indicating which column should
   be plotted.}
+
+  \item{longitude}{Character indicating which column stores
+  longitude values.}
+
+  \item{latitude}{Character indicating which column stores
+  latitude values.}
 
   \item{fill.color.high}{Color to use for top of gradient.}
 
@@ -38,6 +44,20 @@
   formatted.  Takes a function.}
 
   \item{legend.position}{Position of legend.}
+
+  \item{lhs}{Left side of formula to use for facetting.}
+
+  \item{rhs}{Right side of formula to use for facetting.}
+
+  \item{facet}{The type of facetting, if any, to use.}
+
+  \item{wrap.nrow}{The number of rows to to use when using
+  facet_wrap.}
+
+  \item{wrap.ncol}{The number of columns to to use when
+  using facet_wrap.}
+
+  \item{scales}{The scales to be employed when faceting.}
 }
 \value{
   A ggplot object.
