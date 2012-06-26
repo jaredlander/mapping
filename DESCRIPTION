@@ -1,11 +1,11 @@
 Package: mapping
 Type: Package
-Title: Prepares Shape Files for Mapping
+Title: Functions for Easy Mapping with ggplot2.
 Version: 1.0.0
 Date: 2012-06-22
 Author: Jared P. Lander
 Maintainer: <packages@jaredlander.com>
-Description: Prepares Shape Files for Mapping
+Description: Functions for Easy Mapping with ggplot2.
 License: BSD
 LazyLoad: yes
 Depends:
