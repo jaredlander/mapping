@@ -8,6 +8,7 @@
 #' @return A \code{\link{data.frame}} suitable for use in \code{ggplot}.
 #' @author Jared P. Lander
 #' @aliases prepare.shape.fortify
+#' @export prepare.shape.fortify
 #' @import ggplot2 plyr maptools
 #' @seealso prepare.shape
 #' @examples \dontrun{
