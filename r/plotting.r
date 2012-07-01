@@ -15,6 +15,7 @@
 #' @param variable Character indicating which column should be plotted.
 #' @param longitude Character indicating which column stores longitude values.
 #' @param latitude Character indicating which column stores latitude values.
+#' @param fill.color.low Color to use for bottom of gradient.
 #' @param fill.color.high Color to use for top of gradient.
 #' @param space Color space to use for gradient.
 #' @param path.color Color to use for shapefile lines.
@@ -41,7 +42,8 @@
 #' map.plot(mana, "Median.Income", formatter=multiple_format(extra=dollar, multiple="K"))
 #' }
 #' 
-map.plot <- function(data, variable, longitude="long", latitude="lat", fill.color.high=muted("green"), space="Lab", 
+map.plot <- function(data, variable, longitude="long", latitude="lat", 
+                     fill.color.low=muted("green"),  fill.color.high=muted("green"), space="Lab", 
                      path.color="white", 
                      title=NULL, title.size=15, title.hjust=.5,
                      xlab=NULL, ylab=NULL, barheight=15, formatter=percent,
@@ -81,7 +83,7 @@ map.plot <- function(data, variable, longitude="long", latitude="lat", fill.colo
         # make the legend be titleless and have a long, tal color bar
         guides(fill=guide_colorbar(title=NULL, ticks=FALSE, barheight=barheight)) + 
         # make the color scale a gradient and use the chosen formatter
-        scale_fill_gradient2(labels=formatter, space=space, high=fill.color.high) + 
+        scale_fill_gradient2(labels=formatter, space=space, low=fill.color.low, high=fill.color.high) + 
         # title of plot
         opts(title=title, plot.title=theme_text(size=title.size, hjust=title.hjust)) +
         # faceting if called for

@@ -3,10 +3,11 @@
 \title{map.plot}
 \usage{
   map.plot(data, variable, longitude = "long",
-    latitude = "lat", fill.color.high = muted("green"),
-    space = "Lab", path.color = "white", title = NULL,
-    title.size = 15, title.hjust = 0.5, xlab = NULL,
-    ylab = NULL, barheight = 15, formatter = percent,
+    latitude = "lat", fill.color.low = muted("green"),
+    fill.color.high = muted("green"), space = "Lab",
+    path.color = "white", title = NULL, title.size = 15,
+    title.hjust = 0.5, xlab = NULL, ylab = NULL,
+    barheight = 15, formatter = percent,
     legend.position = c("right", "bottom", "left", "top", "none"),
     lhs = NULL, rhs = NULL,
     facet = c("none", "facet_wrap", "facet_grid"),
@@ -25,6 +26,9 @@
 
   \item{latitude}{Character indicating which column stores
   latitude values.}
+
+  \item{fill.color.low}{Color to use for bottom of
+  gradient.}
 
   \item{fill.color.high}{Color to use for top of gradient.}
 
