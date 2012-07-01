@@ -5,7 +5,7 @@
   map.plot(data, variable, longitude = "long",
     latitude = "lat", fill.color.high = muted("green"),
     space = "Lab", path.color = "white", title = NULL,
-    title.size = NULL, title.hjust = NULL, xlab = NULL,
+    title.size = 15, title.hjust = 0.5, xlab = NULL,
     ylab = NULL, barheight = 15, formatter = percent,
     legend.position = c("right", "bottom", "left", "top", "none"),
     lhs = NULL, rhs = NULL,
