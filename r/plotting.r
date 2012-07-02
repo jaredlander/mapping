@@ -95,7 +95,7 @@ map.plot <- function(data, variable=NULL, longitude="long", latitude="lat",
         # make the legend be titleless and have a long, tal color bar
         guides(fill=guide_colorbar(title=NULL, ticks=FALSE, barheight=barheight)) + 
         # make the color scale a gradient and use the chosen formatter
-        scale_fill_gradient2(labels=formatter, space=space, low=fill.color.low, mid=fill.color.mid, high=fill.color.high) + 
+        scale_fill_gradient2(labels=formatter, space=space, low=fill.color.low, mid=fill.color.mid, high=fill.color.high, midpoint=midpoint) + 
         # title of plot
         opts(title=title, plot.title=theme_text(size=title.size, hjust=title.hjust)) +
         # faceting if called for
