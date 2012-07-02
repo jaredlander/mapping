@@ -84,8 +84,8 @@ map.plot <- function(data, variable=NULL, longitude="long", latitude="lat",
         # lat/long and group
         aes_string(x=longitude, y=latitude, group="group") + 
         # coloring based on the variable
-        aes_string(fill=variable) +  geom_polygon() + 
-        thePolygons + #geom_path(color=path.color) + coord_equal() + 
+        thePolygons +#aes_string(fill=variable) +  geom_polygon() + 
+        geom_path(color=path.color) + coord_equal() + 
         # mapping options
         mapOpts + 
         # x/y labels
