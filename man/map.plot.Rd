@@ -3,7 +3,8 @@
 \title{map.plot}
 \usage{
   map.plot(data, variable, longitude = "long",
-    latitude = "lat", fill.color.low = muted("green"),
+    latitude = "lat", fill.color.low = muted("red"),
+    fill.color.mid = "white",
     fill.color.high = muted("green"), space = "Lab",
     path.color = "white", title = NULL, title.size = 15,
     title.hjust = 0.5, xlab = NULL, ylab = NULL,
@@ -28,6 +29,9 @@
   latitude values.}
 
   \item{fill.color.low}{Color to use for bottom of
+  gradient.}
+
+  \item{fill.color.mid}{Color to use for middle of
   gradient.}
 
   \item{fill.color.high}{Color to use for top of gradient.}
