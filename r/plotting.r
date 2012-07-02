@@ -43,7 +43,7 @@
 #' map.plot(mana, "Median.Income", formatter=multiple_format(extra=dollar, multiple="K"))
 #' }
 #' 
-map.plot <- function(data, variable, longitude="long", latitude="lat", 
+map.plot <- function(data, variable=NULL, longitude="long", latitude="lat", 
                      fill.color.low=muted("red"), fill.color.mid="white",  fill.color.high=muted("green"), space="Lab", 
                      path.color="white", 
                      title=NULL, title.size=15, title.hjust=.5,
@@ -70,13 +70,22 @@ map.plot <- function(data, variable, longitude="long", latitude="lat",
     # build facets, could be NULL or facet_wrap or facet_grid
     facet <- do.call(facet, args=list(formula=build.formula(lhs=lhs, rhs=rhs), nrow=wrap.nrow, ncol=wrap.ncol, scales=scales))
     
+    # if no variable is supplied just plot the map without polygons
+    if(!is.null(variable))
+    {
+        thePolygons <- geom_polygon(aes_string(fill=variable))
+    }else
+    {
+        thePolygons <- NULL
+    }
+    
     # start plotting
     p <- ggplot(data) + 
         # lat/long and group
         aes_string(x=longitude, y=latitude, group="group") + 
         # coloring based on the variable
         aes_string(fill=variable) +  geom_polygon() + 
-        geom_path(color=path.color) + coord_equal() + 
+        thePolygons + #geom_path(color=path.color) + coord_equal() + 
         # mapping options
         mapOpts + 
         # x/y labels

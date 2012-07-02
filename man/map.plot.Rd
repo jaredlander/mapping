@@ -2,7 +2,7 @@
 \alias{map.plot}
 \title{map.plot}
 \usage{
-  map.plot(data, variable, longitude = "long",
+  map.plot(data, variable = NULL, longitude = "long",
     latitude = "lat", fill.color.low = muted("red"),
     fill.color.mid = "white",
     fill.color.high = muted("green"), space = "Lab",
