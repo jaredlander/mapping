@@ -19,6 +19,7 @@
 #' @param fill.color.mid Color to use for middle of gradient.
 #' @param fill.color.high Color to use for top of gradient.
 #' @param space Color space to use for gradient.
+#' @param midpoint Position of mid point of scale, defaults to 0.
 #' @param path.color Color to use for shapefile lines.
 #' @param title Title of plot.
 #' @param title.size Size of \code{Title} font.
@@ -45,6 +46,7 @@
 #' 
 map.plot <- function(data, variable=NULL, longitude="long", latitude="lat", 
                      fill.color.low=muted("red"), fill.color.mid="white",  fill.color.high=muted("green"), space="Lab", 
+                     midpoint=0,
                      path.color="white", 
                      title=NULL, title.size=15, title.hjust=.5,
                      xlab=NULL, ylab=NULL, barheight=15, formatter=percent,

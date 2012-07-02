@@ -6,9 +6,9 @@
     latitude = "lat", fill.color.low = muted("red"),
     fill.color.mid = "white",
     fill.color.high = muted("green"), space = "Lab",
-    path.color = "white", title = NULL, title.size = 15,
-    title.hjust = 0.5, xlab = NULL, ylab = NULL,
-    barheight = 15, formatter = percent,
+    midpoint = 0, path.color = "white", title = NULL,
+    title.size = 15, title.hjust = 0.5, xlab = NULL,
+    ylab = NULL, barheight = 15, formatter = percent,
     legend.position = c("right", "bottom", "left", "top", "none"),
     lhs = NULL, rhs = NULL,
     facet = c("none", "facet_wrap", "facet_grid"),
@@ -37,6 +37,9 @@
   \item{fill.color.high}{Color to use for top of gradient.}
 
   \item{space}{Color space to use for gradient.}
+
+  \item{midpoint}{Position of mid point of scale, defaults
+  to 0.}
 
   \item{path.color}{Color to use for shapefile lines.}
 
