@@ -77,7 +77,7 @@ map.plot <- function(data, variable=NULL, longitude="long", latitude="lat",
     {
         thePolygons <- geom_polygon(aes_string(fill=variable))
         theGuides <- guides(fill=guide_colorbar(title=NULL, ticks=FALSE, barheight=barheight))
-        theScalr <- scale_fill_gradient2(labels=formatter, space=space, low=fill.color.low, mid=fill.color.mid, high=fill.color.high, midpoint=midpoint) +
+        theScale <- scale_fill_gradient2(labels=formatter, space=space, low=fill.color.low, mid=fill.color.mid, high=fill.color.high, midpoint=midpoint)
     }else
     {
         thePolygons <- NULL
