@@ -76,9 +76,13 @@ map.plot <- function(data, variable=NULL, longitude="long", latitude="lat",
     if(!is.null(variable))
     {
         thePolygons <- geom_polygon(aes_string(fill=variable))
+        theGuides <- guides(fill=guide_colorbar(title=NULL, ticks=FALSE, barheight=barheight))
+        theScalr <- scale_fill_gradient2(labels=formatter, space=space, low=fill.color.low, mid=fill.color.mid, high=fill.color.high, midpoint=midpoint) +
     }else
     {
         thePolygons <- NULL
+        theGuides <- NULL
+        theScale <- NULL
     }
     
     # start plotting
@@ -93,9 +97,9 @@ map.plot <- function(data, variable=NULL, longitude="long", latitude="lat",
         # x/y labels
         labs(x=xlab, y=ylab) + 
         # make the legend be titleless and have a long, tal color bar
-        guides(fill=guide_colorbar(title=NULL, ticks=FALSE, barheight=barheight)) + 
+        theGuides + #guides(fill=guide_colorbar(title=NULL, ticks=FALSE, barheight=barheight)) + 
         # make the color scale a gradient and use the chosen formatter
-        scale_fill_gradient2(labels=formatter, space=space, low=fill.color.low, mid=fill.color.mid, high=fill.color.high, midpoint=midpoint) + 
+        theScale + #scale_fill_gradient2(labels=formatter, space=space, low=fill.color.low, mid=fill.color.mid, high=fill.color.high, midpoint=midpoint) + 
         # title of plot
         opts(title=title, plot.title=theme_text(size=title.size, hjust=title.hjust)) +
         # faceting if called for
