@@ -20,6 +20,6 @@ mapping:::distance.matrix()
 }
 }
 \author{
-  Jared P. Lander and Nicholas Galisinao
+  Jared P. Lander and Nicholas Galasinao
 }
 

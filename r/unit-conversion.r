@@ -5,7 +5,7 @@
 #' This is a conversion for common distance conversions such as kilometers to miles or feet to yards.
 #' 
 #' @aliases distance.matrix
-#' @author Jared P. Lander and Nicholas Galisinao
+#' @author Jared P. Lander and Nicholas Galasinao
 #' @return A square matrix of distance multipliers
 #' @examples
 #' 
