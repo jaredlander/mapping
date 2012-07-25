@@ -1,8 +1,18 @@
-#' dist.matrix
+#' distance.matrix
 #' 
-#' Find multipliers for unit conversion
+#' Distance multipliers for distance conversion
 #' 
-#' This is a conversion for common
+#' This is a conversion for common distance conversions such as kilometers to miles or feet to yards.
+#' 
+#' @aliases distance.matrix
+#' @author Jared P. Lander and Nicholas Galisinao
+#' @return A square matrix of distance multipliers
+#' @examples
+#' 
+#' \dontrun{
+#' mapping:::distance.matrix()
+#' }
+#' 
 distance.matrix <- function()
 {
     theUnits <- c("meters", "miles", "kilometers", "feet", "yards")
@@ -32,6 +42,28 @@ distance.matrix <- function()
 }
 
 
+#' unit.multiplier
+#' 
+#' Finds the conversion multiplier from one unit to another.
+#' 
+#' Finds the conversion multiplier from one unit to another.
+#' 
+#' @author Jared P. Lander
+#' @export unit.multiplier
+#' @aliases unit.multiplier
+#' @param unit Type of unit to be converted.
+#' @param from The units to be converted from.
+#' @param to The units to be converted to.
+#' @return A matrix of multipliers for converting from to to.
+#' @examples
+#' 
+#' unit.multiplier()
+#' unit.multiplier(from="meters", to="miles")
+#' unit.multiplier(from=c("meters", "feet"), to="miles")
+#' unit.multiplier(from="feet", to=c("miles", "kilometers"))
+#' unit.multiplier(from=c("meters", "feet"), to=c("miles", "kilometers"))
+#' unit.multiplier(from=c("meters", "feet"), to=c("miles", "kilometers"), unit="distance")
+#' 
 unit.multiplier <- function(unit="distance", from=rownames(unitMat), to=colnames(unitMat))
 {
     # get matrix of multipliers
@@ -47,6 +79,27 @@ unit.multiplier <- function(unit="distance", from=rownames(unitMat), to=colnames
     unitMat[from, to, drop=FALSE]
 }
 
+
+#' dist.multiplier
+#' 
+#' Finds the conversion multiplier from one unit of distance to another.
+#' 
+#' Finds the conversion multiplier from one unit of distance to another.
+#' 
+#' @author Jared P. Lander
+#' @export dist.multiplier
+#' @aliases dist.multiplier
+#' @param from The units to be converted from.
+#' @param to The units to be converted to.
+#' @return A matrix of multipliers for converting from to to.
+#' @examples
+#' 
+#' dist.multiplier()
+#' dist.multiplier(from="meters", to="miles")
+#' dist.multiplier(from=c("meters", "feet"), to="miles")
+#' dist.multiplier(from="feet", to=c("miles", "kilometers"))
+#' dist.multiplier(from=c("meters", "feet"), to=c("miles", "kilometers"))
+#' 
 dist.multiplier <- function(from="miles", to="feet")
 {
     unit.multiplier(unit="distance", from=from, to=to)
