@@ -46,7 +46,7 @@
 #' 
 map.plot <- function(data, variable=NULL, longitude="long", latitude="lat", 
                      fill.color.low=muted("red"), fill.color.mid="white",  fill.color.high=muted("green"), space="Lab", 
-                     midpoint=0,
+                     midpoint=mean(data[[variable]], na.rm=TRUE),
                      path.color="white", 
                      title=NULL, title.size=15, title.hjust=.5,
                      xlab=NULL, ylab=NULL, barheight=15, formatter=percent,
