@@ -21,3 +21,4 @@ Collate:
     'plotting.r'
     'unit-conversion.r'
     'within-distance.r'
+ByteCompile: TRUE
