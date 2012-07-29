@@ -76,7 +76,7 @@ unit.multiplier <- function(unit="distance", from=rownames(unitMat), to=colnames
     }
 
     # get the desired results
-    unitMat[from, to, drop=FALSE]
+    unitMat[from, to, drop=TRUE]
 }
 
 
