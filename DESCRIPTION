@@ -11,11 +11,13 @@ LazyLoad: yes
 Depends:
     ggplot2,
     plyr,
-    useful,
     scales,
     maptools
+Imports:
+    useful
 Collate:
     'shape.r'
     'formatters.r'
     'plotting.r'
     'unit-conversion.r'
+    'within-distance.r'
