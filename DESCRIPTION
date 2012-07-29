@@ -9,11 +9,11 @@ Description: Functions for Easy Mapping with ggplot2.
 License: BSD
 LazyLoad: yes
 Depends:
-    ggplot2,
+    ggplot2
+Imports:
     plyr,
     scales,
-    maptools
-Imports:
+    maptools,
     useful
 Collate:
     'shape.r'
