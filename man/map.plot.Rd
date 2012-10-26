@@ -14,7 +14,8 @@
     lhs = NULL, rhs = NULL,
     facet = c("none", "facet_wrap", "facet_grid"),
     wrap.nrow = NULL, wrap.ncol = NULL,
-    scales = c("fixed", "free", "free_y", "free_x"))
+    scales = c("fixed", "free", "free_y", "free_x"),
+    gradient = "2")
 }
 \arguments{
   \item{data}{\code{\link{data.frame}} resulting from using
@@ -75,6 +76,9 @@
   using facet_wrap.}
 
   \item{scales}{The scales to be employed when faceting.}
+
+  \item{gradient}{1 means scale_colour_gradient, 2 means
+  scale_colour_gradient2}
 }
 \value{
   A ggplot object.
