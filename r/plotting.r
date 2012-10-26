@@ -35,6 +35,7 @@
 #' @param wrap.nrow The number of rows to to use when using facet_wrap.
 #' @param wrap.ncol The number of columns to to use when using facet_wrap.
 #' @param scales The scales to be employed when faceting.
+#' @param gradient 1 means scale_colour_gradient, 2 means scale_colour_gradient2
 #' @return A ggplot object.
 #' @examples
 #' 
@@ -52,7 +53,7 @@ map.plot <- function(data, variable=NULL, longitude="long", latitude="lat",
                      xlab=NULL, ylab=NULL, barheight=15, formatter=percent,
                      legend.position=c("right", "bottom", "left", "top", "none"), 
                      lhs=NULL, rhs=NULL, facet=c("none", "facet_wrap", "facet_grid"), wrap.nrow=NULL, wrap.ncol=NULL, 
-                     scales=c("fixed", "free", "free_y", "free_x")
+                     scales=c("fixed", "free", "free_y", "free_x"), gradient="2"
                      )
 {
     # old formatter multiple_format(multiple="K", extra=comma)
@@ -72,12 +73,15 @@ map.plot <- function(data, variable=NULL, longitude="long", latitude="lat",
     # build facets, could be NULL or facet_wrap or facet_grid
     facet <- do.call(facet, args=list(formula=build.formula(lhs=lhs, rhs=rhs), nrow=wrap.nrow, ncol=wrap.ncol, scales=scales))
     
+    possibleScales <- list("1"=scale_fill_gradient(labels=formatter, space=space, low=fill.color.low, high=fill.color.high), "2"=scale_fill_gradient2(labels=formatter, space=space, low=fill.color.low, mid=fill.color.mid, high=fill.color.high, midpoint=midpoint))
+    
     # if no variable is supplied just plot the map without polygons
     if(!is.null(variable))
     {
         thePolygons <- geom_polygon(aes_string(fill=variable))
         theGuides <- guides(fill=guide_colorbar(title=NULL, ticks=FALSE, barheight=barheight))
-        theScale <- scale_fill_gradient2(labels=formatter, space=space, low=fill.color.low, mid=fill.color.mid, high=fill.color.high, midpoint=midpoint)
+        #theScale <- scale_fill_gradient2(labels=formatter, space=space, low=fill.color.low, mid=fill.color.mid, high=fill.color.high, midpoint=midpoint)
+        theScale <- possibleScales[[gradient]]
     }else
     {
         thePolygons <- NULL
@@ -187,5 +191,5 @@ none <- function(...)
 #' @return A \code{\link{list}} of ggplot items.
 map.options <- function()
 {
-    list(opts(panel.grid.major=theme_blank(), panel.grid.minor=theme_blank(), axis.text.x=theme_blank(), axis.text.y=theme_blank(), axis.ticks=theme_blank(), panel.background=theme_blank()))
+    list(theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank(), axis.ticks=element_blank(), panel.background=element_blank()))
 }
